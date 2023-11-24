@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<header>
+   <a href="{% url 'toKorz' %}"> <button>Корзина</button></a>
+</header>
+<main>
+    {% for one in tovari %}
+    <div class="card">
+        <img src="{% static one.image %}" alt="">
+        <p>{{ one.opis }}</p>
+        <p>{{ one.price }} рублей</p>
+        <a href="{% url 'buy' one.id %}"> <button>Купить</button></a>
+
+
+    </div>
+    {% endfor %}
+</main>
+</body>
+</html>

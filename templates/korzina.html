@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+</head>
+<body>
+<table>
+    {% for one in items %}
+        <tr>
+        <td>{{ one.tovar.opis }}</td>
+        <td>{{ one.count }} шт</td>
+        <td>{{ one.summa }} руб</td>
+        <td>
+            <a href="{% url 'del' one.id %}">
+                <button>удалить</button>
+            </a>
+        </td>
+        </tr>
+    {% endfor %}
+</table>
+<h2>Сумма {{ itog }} рублей</h2>
+</body>
+</html>
