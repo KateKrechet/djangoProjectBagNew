@@ -16,3 +16,8 @@ class Korzina(models.Model):
 
     def calcSumma(self):
         return self.count * self.tovar.price*self.tovar.discount
+
+class Order(models.Model):
+    address = models.CharField(max_length=200)
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=12)

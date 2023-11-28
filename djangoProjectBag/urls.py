@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='home'),
     path('cart/<int:id>',views.buy,name='buy'),
-    path('cart/>',views.toKorz,name='toKorz'),
-    path('cart/del/<int:id>',views.delete,name='del')
+    path('cart/',views.toKorz,name='toKorz'),
+    path('cart/del/<int:id>',views.delete,name='del'),
+    path('cart/pobeda/',views.korzinaZakaz,name='korzinaZakaz')
 ]

@@ -1,24 +1,41 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Корзина</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="{% static '1.js' %}" defer></script>
 </head>
 <body>
 <table>
     {% for one in items %}
         <tr>
-        <td>{{ one.tovar.opis }}</td>
-        <td>{{ one.count }} шт</td>
-        <td>{{ one.summa }} руб</td>
-        <td>
-            <a href="{% url 'del' one.id %}">
-                <button>удалить</button>
-            </a>
-        </td>
+            <td>{{ one.tovar.opis }}</td>
+            <td>{{ one.count }} шт</td>
+            <td>{{ one.summa }} руб</td>
+            <td>
+                <a href="{% url 'del' one.id %}">
+                    <button>удалить</button>
+                </a>
+            </td>
         </tr>
     {% endfor %}
 </table>
 <h2>Сумма {{ itog }} рублей</h2>
+<button id="fin">Оформить заказ</button>
+<div id="forma" hidden>
+    <label for="adres">Напишите город</label>
+    <input autocomplete="off" id="adres" type="text" name="adres">
+
+    <label for="name">Напишите имя</label>
+    <input autocomplete="off" id="name" type="text" name="name">
+
+    <label for="tel">Напишите телефон</label>
+    <input autocomplete="off" id="tel" type="text" name="tel">
+
+    <input id="fin2" type="button" value="Подтвердить" onclick="f2()">
+</div>
+
 </body>
 </html>
