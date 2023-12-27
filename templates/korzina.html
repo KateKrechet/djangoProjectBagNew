@@ -12,8 +12,17 @@
     {% for one in items %}
         <tr>
             <td>{{ one.tovar.opis }}</td>
+
+            <td>
+                <a href="{% url 'count' -1 one.id %}"><button>-</button></a>
+            </td>
             <td>{{ one.count }} шт</td>
-            <td>{{ one.summa }} руб</td>
+            <td>
+                <a href="{% url 'count' 1 one.id %}"><button>+</button></a>
+            </td>
+
+            <td>Цена:{{ one.summa }} руб</td>
+            <td>Всего: {{ one.calcSumma }} руб</td>
             <td>
                 <a href="{% url 'del' one.id %}">
                     <button>удалить</button>
@@ -22,7 +31,7 @@
         </tr>
     {% endfor %}
 </table>
-<h2>Сумма {{ itog }} рублей</h2>
+<h2>Сумма итого: {{ itog }} рублей</h2>
 <button id="fin">Оформить заказ</button>
 <div id="forma" hidden>
     <label for="adres">Напишите город</label>

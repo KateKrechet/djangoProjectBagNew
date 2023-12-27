@@ -30,8 +30,10 @@ def buy(req, id):
 def toKorz(req):
     items = Korzina.objects.all()
     itog = 0
+
     for i in items:
-        itog += i.summa
+        itog += i.calcSumma()
+
     data = {'items': items, 'itog': itog}
     # относится к f2
     # if req.POST.get('type') == 'params':
@@ -69,7 +71,7 @@ def korzinaZakaz(req):
         for i in items:
             itog += i.summa
         Order.objects.create(address=adres, name=name, phone=tel, total=itog,
-                                samzakaz=samzakaz)
+                             samzakaz=samzakaz)
         items.delete()
         #
         TOKEN = "5454744752:AAFboSLD_pHqFPUXrG_Fup5TVleSker9CXY"
@@ -82,3 +84,14 @@ def korzinaZakaz(req):
         #
         return JsonResponse({'mes': 'data success', 'link': '../'})
     return redirect('home')
+
+
+def korzinaCount(req, num, id):
+    tovar = Korzina.objects.get(id=id)
+    print(num,id)
+    tovar.count += int(num)
+    tovar.save()
+    if tovar.count<0:
+        tovar.count = 0
+        tovar.delete()
+    return  redirect('toKorz')
