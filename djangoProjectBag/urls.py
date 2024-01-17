@@ -25,5 +25,6 @@ urlpatterns = [
     path('cart/',views.toKorz,name='toKorz'),
     path('cart/del/<int:id>',views.delete,name='del'),
     path('cart/pobeda/',views.korzinaZakaz,name='korzinaZakaz'),
-    path('cart/count/<str:num>/<int:id>/',views.korzinaCount,name='count')
+    path('cart/count/<str:num>/<int:id>/',views.korzinaCount,name='count'),
+    path('toizbran/',views.toizbran,name='toIzbran')
 ]
